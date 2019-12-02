@@ -20,9 +20,18 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Profile(models.Model):
     title = models.CharField(max_length=20)
     photo = models.ImageField(blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class FilePost(models.Model):
+    title = models.CharField(max_length=20)
+    file_data = models.FileField(null=False)
 
     def __str__(self):
         return self.title

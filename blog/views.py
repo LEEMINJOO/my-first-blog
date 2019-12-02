@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Profile
+from .models import Post, Profile, FilePost
 from .forms import PostForm, ProfileForm
 
 # Create your views here.
@@ -9,7 +9,8 @@ from .forms import PostForm, ProfileForm
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     profiles = Profile.objects.all()
-    return render(request, 'blog/post_list.html', {'posts':posts, 'profiles':profiles})
+    files = FilePost.objects.all()
+    return render(request, 'blog/post_list.html', {'posts':posts, 'profiles':profiles, 'files':files})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
