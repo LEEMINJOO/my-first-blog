@@ -10,4 +10,10 @@
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
 {% endfor %}
+{% for profile in profiles %}
+    <div class="profile">
+        <span>{{ profile.title }}</span> 
+        <img src="{{ profile.photo.url}}" width="100" height="100">
+    </div>
+{% endfor %}
 {% endblock %}
